@@ -11,5 +11,5 @@ A new Flutter project.
 ### 24.07.17
 
     1. Make Background, Player component(o)
-    2. Add CollisionDetection to Player, BackGround component
+    2. Add CollisionDetection to Player, Floor component => flame forge2d use ContactCallbacks instead of CollisionCallbacks(o)
     3. Add jump function to Player component

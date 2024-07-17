@@ -4,7 +4,7 @@ import 'package:jumping_game/src/game.dart';
 
 void main() {
   runApp(
-    GameWidget.controlled(
+    const GameWidget.controlled(
       gameFactory: JumpGame.new,
     ),
   );
