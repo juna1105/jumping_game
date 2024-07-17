@@ -9,13 +9,14 @@ import 'package:jumping_game/src/config.dart';
 class JumpGame extends Forge2DGame with HasCollisionDetection, TapDetector {
   JumpGame()
       : super(
-          gravity: Vector2(0, 10),
-          zoom: 8.0,
+          gravity: Vector2(0, 100),
+          zoom: 10.0,
           camera: CameraComponent.withFixedResolution(
             width: gameWidth,
             height: gameHeight,
           ),
         );
+
   @override
   FutureOr<void> onLoad() async {
     await super.onLoad();

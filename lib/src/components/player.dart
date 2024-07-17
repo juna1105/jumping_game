@@ -1,11 +1,14 @@
 import 'package:flame/components.dart';
+import 'package:flame/events.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:jumping_game/src/config.dart';
 import 'package:jumping_game/src/game.dart';
 
-class PlayerForge2d extends BodyComponent<JumpGame> with ContactCallbacks {
+class PlayerForge2d extends BodyComponent<JumpGame>
+    with ContactCallbacks, TapCallbacks {
   PlayerForge2d(Sprite sprite)
       : super(
+          renderBody: false,
           children: [
             SpriteComponent(
               sprite: sprite,
@@ -39,8 +42,16 @@ class PlayerForge2d extends BodyComponent<JumpGame> with ContactCallbacks {
           Vector2(0, 0),
           0.0,
         ),
+      density: 5,
     );
     return world.createBody(bodyDef)..createFixture(fixtureDef);
+  }
+
+  @override
+  void onTapDown(TapDownEvent event) {
+    // TODO: implement onTapDown
+    super.onTapDown(event);
+    body.applyLinearImpulse(Vector2(0, -30000));
   }
 
   @override

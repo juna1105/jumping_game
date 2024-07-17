@@ -12,4 +12,10 @@ A new Flutter project.
 
     1. Make Background, Player component(o)
     2. Add CollisionDetection to Player, Floor component => flame forge2d use ContactCallbacks instead of CollisionCallbacks(o)
-    3. Add jump function to Player component
+    3. Add jump function to Player component(o)
+
+### 24.07.18
+
+     1. change component type => forge2d component => normal component
+     2. make question,input area
+     3. if user input match question
