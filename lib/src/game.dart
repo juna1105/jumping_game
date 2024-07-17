@@ -1,26 +1,27 @@
 import 'dart:async';
 
+import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
+import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:jumping_game/src/components/components.dart';
 import 'package:jumping_game/src/config.dart';
 
-class JumpGame extends FlameGame {
+class JumpGame extends Forge2DGame {
   JumpGame()
       : super(
-            camera: CameraComponent.withFixedResolution(
-          width: gameWidth,
-          height: gameHeight,
-        ));
+          zoom: 1.0,
+          camera: CameraComponent.withFixedResolution(
+            width: gameWidth,
+            height: gameHeight,
+          ),
+        );
   @override
   FutureOr<void> onLoad() async {
-    print(camera.viewfinder.anchor);
-    final playerSprite = await images.load('player.png');
-    final background = await images.load('background.png');
-    // TODO: implement onLoad
-
-    await world.add(BackGround(sprite: Sprite(background)));
-    await world.add(Player(sprite: Sprite(playerSprite)));
+    await world.add(BackGround());
+    await world.add(PlayerForge2d(Sprite(
+      await images.load('player.png'),
+    )));
     return super.onLoad();
   }
 }

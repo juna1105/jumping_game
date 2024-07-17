@@ -2,15 +2,14 @@
 
 A new Flutter project.
 
-## Getting Started
+## Daily Log
 
-This project is a starting point for a Flutter application.
+### 24.07.16
 
-A few resources to get you started if this is your first Flutter project:
+     Two SpriteComponent add to World
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 24.07.17
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    1. Make Background, Player component(o)
+    2. Add CollisionDetection to Player, BackGround component
+    3. Add jump function to Player component

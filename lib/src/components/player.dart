@@ -1,18 +1,30 @@
 import 'dart:async';
-
 import 'package:flame/components.dart';
+import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:jumping_game/src/config.dart';
-import 'package:jumping_game/src/game.dart';
 
-class Player extends SpriteComponent with HasGameReference<JumpGame> {
-  Player({required super.sprite})
+class PlayerForge2d extends BodyComponent {
+  PlayerForge2d(Sprite sprite)
       : super(
-          anchor: Anchor.center,
-          position: Vector2(-300, 0),
-          size: Vector2(playerWidth, playerHeight),
+          fixtureDefs: [
+            FixtureDef(
+              PolygonShape()
+                ..setAsBox(
+                    playerWidth / 2, playerHeight / 2, Vector2(0, 0), 0.0),
+            ),
+          ],
+          bodyDef: BodyDef(
+            type: BodyType.dynamic,
+          ),
+          children: [
+            SpriteComponent(
+              sprite: sprite,
+              anchor: Anchor.center,
+              size: Vector2(
+                playerWidth,
+                playerHeight,
+              ),
+            )
+          ],
         );
-  @override
-  FutureOr<void> onLoad() async {
-    super.onLoad();
-  }
 }
