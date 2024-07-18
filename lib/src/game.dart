@@ -2,15 +2,17 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
+import 'package:jumping_game/src/components/button.dart';
 import 'package:jumping_game/src/components/components.dart';
 import 'package:jumping_game/src/components/floor.dart';
 import 'package:jumping_game/src/config.dart';
 
 class JumpGame extends Forge2DGame with HasCollisionDetection, TapDetector {
+  late PlayerForge2d player;
   JumpGame()
       : super(
           gravity: Vector2(0, 100),
-          zoom: 10.0,
+          zoom: 1.0,
           camera: CameraComponent.withFixedResolution(
             width: gameWidth,
             height: gameHeight,
@@ -22,7 +24,8 @@ class JumpGame extends Forge2DGame with HasCollisionDetection, TapDetector {
     await super.onLoad();
     await world.add(BackGround());
     await world.add(Floor());
-    PlayerForge2d player = PlayerForge2d(
+    await world.add(InputButton(buttonType: ButtonType.tr));
+    player = PlayerForge2d(
       Sprite(
         await images.load('player.png'),
       ),

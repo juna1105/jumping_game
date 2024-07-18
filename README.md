@@ -16,6 +16,5 @@ A new Flutter project.
 
 ### 24.07.18
 
-     1. change component type => forge2d component => normal component
-     2. make question,input area
-     3. if user input match question
+     1. Modifying physics to make player motion dynamic(o)
+     2. add jump button component(o)

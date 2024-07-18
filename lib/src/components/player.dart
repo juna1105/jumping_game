@@ -21,12 +21,6 @@ class PlayerForge2d extends BodyComponent<JumpGame>
           ],
         );
 
-  // @override
-  // void update(double dt) {
-  //   print(position);
-  //   super.update(dt);
-  // }
-
   @override
   Body createBody() {
     final bodyDef = BodyDef(
@@ -42,7 +36,7 @@ class PlayerForge2d extends BodyComponent<JumpGame>
           Vector2(0, 0),
           0.0,
         ),
-      density: 5,
+      density: 100,
     );
     return world.createBody(bodyDef)..createFixture(fixtureDef);
   }
@@ -51,7 +45,6 @@ class PlayerForge2d extends BodyComponent<JumpGame>
   void onTapDown(TapDownEvent event) {
     // TODO: implement onTapDown
     super.onTapDown(event);
-    body.applyLinearImpulse(Vector2(0, -30000));
   }
 
   @override
