@@ -18,3 +18,7 @@ A new Flutter project.
 
      1. Modifying physics to make player motion dynamic(o)
      2. add jump button component(o)
+
+### 24.07.19
+
+     1. learn overlays api

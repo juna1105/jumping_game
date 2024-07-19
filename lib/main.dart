@@ -3,9 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:jumping_game/src/game.dart';
 
 void main() {
+  final game = JumpGame();
   runApp(
-    const GameWidget.controlled(
-      gameFactory: JumpGame.new,
+    GameWidget(
+      game: game,
+      overlayBuilderMap: {
+        'kim': (BuildContext context, JumpGame game) => Text(
+              'kim',
+              style: TextStyle(
+                fontSize: 1000,
+              ),
+            )
+      },
     ),
   );
 }

@@ -9,6 +9,7 @@ import 'package:jumping_game/src/config.dart';
 
 class JumpGame extends Forge2DGame with HasCollisionDetection, TapDetector {
   late PlayerForge2d player;
+  final puaseOverlayIdentifier = 'kim';
   JumpGame()
       : super(
           gravity: Vector2(0, 100),
@@ -22,6 +23,7 @@ class JumpGame extends Forge2DGame with HasCollisionDetection, TapDetector {
   @override
   FutureOr<void> onLoad() async {
     await super.onLoad();
+    overlays.add(puaseOverlayIdentifier);
     await world.add(BackGround());
     await world.add(Floor());
     await world.add(InputButton(buttonType: ButtonType.tr));
