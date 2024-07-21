@@ -26,3 +26,8 @@ A new Flutter project.
 ### 24.07.20
 
      1. add input button widgets(o)
+
+### 24.07.21
+
+     1. 문제를 나오게 함.
+     2. 상태 관리를 통해서 캐릭터를 점프시킴

@@ -1,6 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:jumping_game/src/components/widgets/arrow_button.dart';
+import 'package:jumping_game/src/components/widgets/question_widget.dart';
 import 'package:jumping_game/src/game.dart';
 
 void main() {
@@ -9,15 +10,9 @@ void main() {
   );
 }
 
-class MyWidget extends StatefulWidget {
+class MyWidget extends StatelessWidget {
   const MyWidget({super.key});
 
-  @override
-  State<MyWidget> createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<MyWidget> {
-  @override
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,19 +20,25 @@ class _MyWidgetState extends State<MyWidget> {
         body: GameWidget.controlled(
           gameFactory: JumpGame.new,
           loadingBuilder: (p0) {
-            print('로딩중..');
-            return Container(
-              child: const Text(
-                '로딩중...',
-                style: TextStyle(fontSize: 200),
-              ),
+            return const Text(
+              '로딩중...',
+              style: TextStyle(fontSize: 200),
             );
           },
           overlayBuilderMap: {
-            'inputBtn': (BuildContext context, JumpGame game) => Align(
-                  alignment: Alignment.center,
+            'question': (BuildContext context, JumpGame game) =>
+                const Positioned(
+                  top: 10,
+                  right: 10,
+                  left: 10,
+                  child: QuestionWidget(),
+                ),
+            'inputBtn': (BuildContext context, JumpGame game) => Positioned(
+                  bottom: 10,
+                  right: 10,
+                  left: 10,
                   child: ButtonArea(
-                    inputString: game.input,
+                    game: game,
                   ),
                 )
           },
