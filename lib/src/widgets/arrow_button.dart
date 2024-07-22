@@ -1,5 +1,8 @@
+import 'dart:ffi';
+
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:jumping_game/src/config.dart';
 import 'package:jumping_game/src/game.dart';
 import 'package:jumping_game/src/provider/question_manager.dart';
@@ -66,7 +69,7 @@ class ArrowButton extends StatefulWidget {
 
 class _ArrowButtonState extends State<ArrowButton> {
   late AssetsAudioPlayer _assetsAudioPlayer;
-  final bool _click = false;
+  double boxSize = 80;
   Color _getBackgroundColor(ButtonType btnType) {
     switch (btnType) {
       case ButtonType.tl:
@@ -104,20 +107,11 @@ class _ArrowButtonState extends State<ArrowButton> {
   @override
   Widget build(BuildContext context) {
     return Consumer<QuestionManager>(
-      builder: (context, questionManager, child) => ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          shape: const CircleBorder(
-              side: BorderSide(
-            color: Colors.black,
-            width: 2,
-          )),
-          backgroundColor: _getBackgroundColor(widget.btnType),
-          minimumSize: const Size(
-            80,
-            80,
-          ),
-        ),
-        onPressed: () {
+      builder: (context, questionManager, child) => GestureDetector(
+        onTapDown: (details) {
+          setState(() {
+            boxSize = 100;
+          });
           ReactType refresh = questionManager.checkCorrectAnswer(
               widget.btnType, questionManager.count);
           switch (refresh) {
@@ -130,8 +124,28 @@ class _ArrowButtonState extends State<ArrowButton> {
               widget.game.player.jump();
           }
         },
-        child: Text(
-          widget.btnType.toString(),
+        onTapUp: (details) {
+          setState(() {
+            boxSize = 80;
+          });
+        },
+        child: AnimatedContainer(
+          duration: 200.ms,
+          width: boxSize,
+          height: boxSize,
+          decoration: BoxDecoration(
+            color: _getBackgroundColor(widget.btnType),
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: Colors.black,
+              width: 2,
+            ),
+          ),
+          child: Center(
+            child: Text(
+              widget.btnType.toString(),
+            ),
+          ),
         ),
       ),
     );
