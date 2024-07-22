@@ -20,7 +20,7 @@ class PlayerForge2d extends BodyComponent<JumpGame> with ContactCallbacks {
         );
   void jump() {
     body.linearVelocity = Vector2.all(0);
-    body.applyLinearImpulse(Vector2(0, -111110000000));
+    body.applyLinearImpulse(Vector2(0, -11111000000000));
   }
 
   @override
@@ -38,7 +38,7 @@ class PlayerForge2d extends BodyComponent<JumpGame> with ContactCallbacks {
           Vector2(0, 0),
           0.0,
         ),
-      density: 100,
+      density: 1000,
     );
     return world.createBody(bodyDef)..createFixture(fixtureDef);
   }

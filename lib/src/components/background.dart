@@ -4,7 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:jumping_game/src/game.dart';
 
-class BackGround extends RectangleComponent with HasGameReference<JumpGame> {
+class BackGround extends SpriteComponent with HasGameReference<JumpGame> {
   BackGround()
       : super(
           anchor: Anchor.center,
@@ -15,8 +15,8 @@ class BackGround extends RectangleComponent with HasGameReference<JumpGame> {
   @override
   FutureOr<void> onLoad() async {
     super.onLoad();
-    // final image = await game.images.load('background.png');
-    // sprite = Sprite(image);
+    final image = await game.images.load('background.png');
+    sprite = Sprite(image);
     size = Vector2(game.width, 10000);
   }
 }

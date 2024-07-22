@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.6
   flame: ^1.18.0
   flame_forge2d: ^0.18.1
+  provider: ^6.1.2
+  flutter_animate: ^4.5.0
+  assets_audio_player: ^3.1.1
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +65,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/audios/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

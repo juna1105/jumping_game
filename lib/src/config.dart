@@ -2,6 +2,8 @@ import 'package:flame/components.dart';
 
 enum ButtonType { tl, tr, br, bl }
 
+enum ReactType { good, bad, jump }
+
 const gameWidth = 1440.0;
 const gameHeight = 6000.0;
 const playerWidth = 100.0;
