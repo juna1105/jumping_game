@@ -38,7 +38,7 @@ class PlayerForge2d extends BodyComponent<JumpGame> with ContactCallbacks {
           Vector2(0, 0),
           0.0,
         ),
-      density: 10,
+      density: 100,
     );
     return world.createBody(bodyDef)..createFixture(fixtureDef);
   }
@@ -49,4 +49,5 @@ class PlayerForge2d extends BodyComponent<JumpGame> with ContactCallbacks {
     print('I M PLAYER');
     super.beginContact(other, contact);
   }
+
 }

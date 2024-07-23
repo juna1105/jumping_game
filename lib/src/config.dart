@@ -6,7 +6,7 @@ enum ReactType { good, bad, jump }
 
 const gameWidth = 1440.0;
 const gameHeight = 6000.0;
-const startHeight = -3000.0;
+const startHeight = -2000.0;
 const playerWidth = 100.0;
 const playerHeight = 200.0;
 Vector2 floorSize = Vector2(gameWidth, gameHeight / 40);

@@ -41,7 +41,7 @@ class Floor extends BodyComponent with ContactCallbacks {
 
   @override
   void beginContact(Object other, Contact contact) {
-    print('I M FLOOR');
+    print(DateTime.now());
     super.beginContact(other, contact);
   }
 
