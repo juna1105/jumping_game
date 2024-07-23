@@ -4,24 +4,27 @@ import 'package:flutter/material.dart';
 import 'package:jumping_game/src/config.dart';
 
 class Floor extends BodyComponent with ContactCallbacks {
-  Floor()
+  Floor({required this.position, required this.color})
       : super(
           children: [
             RectangleComponent(
               anchor: Anchor.center,
               paint: Paint()
-                ..color = Colors.blueAccent
+                ..color = color
                 ..style = PaintingStyle.fill,
               size: floorSize,
             )
           ],
         );
+  final Color color;
+  @override
+  final Vector2 position;
 
   @override
   Body createBody() {
     final bodyDef = BodyDef(
       userData: this,
-      position: Vector2(0, 0),
+      position: position,
       type: BodyType.static,
     );
     final fixtureDef = FixtureDef(
@@ -40,5 +43,11 @@ class Floor extends BodyComponent with ContactCallbacks {
   void beginContact(Object other, Contact contact) {
     print('I M FLOOR');
     super.beginContact(other, contact);
+  }
+
+  @override
+  void onRemove() {
+    // TODO: implement onRemove
+    super.onRemove();
   }
 }

@@ -20,14 +20,14 @@ class PlayerForge2d extends BodyComponent<JumpGame> with ContactCallbacks {
         );
   void jump() {
     body.linearVelocity = Vector2.all(0);
-    body.applyLinearImpulse(Vector2(0, -11111000000000));
+    body.applyLinearImpulse(Vector2(0, -8000000));
   }
 
   @override
   Body createBody() {
     final bodyDef = BodyDef(
       userData: this,
-      position: Vector2(0, -gameHeight / 4),
+      position: Vector2(0, startHeight),
       type: BodyType.dynamic,
     );
     final fixtureDef = FixtureDef(
@@ -38,7 +38,7 @@ class PlayerForge2d extends BodyComponent<JumpGame> with ContactCallbacks {
           Vector2(0, 0),
           0.0,
         ),
-      density: 1000,
+      density: 10,
     );
     return world.createBody(bodyDef)..createFixture(fixtureDef);
   }

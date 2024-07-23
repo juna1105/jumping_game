@@ -1,8 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:jumping_game/src/provider/question_manager.dart';
-import 'package:jumping_game/src/widgets/arrow_button.dart';
-import 'package:jumping_game/src/widgets/question_widget.dart';
+import 'package:jumping_game/src/widgets/widgets.dart';
 import 'package:jumping_game/src/game.dart';
 import 'package:provider/provider.dart';
 
@@ -50,7 +49,13 @@ class MyWidget extends StatelessWidget {
                     child: ButtonArea(
                       game: game,
                     ),
-                  )
+                  ),
+              'startBtn': (BuildContext context, JumpGame game) => Align(
+                    alignment: Alignment.bottomCenter,
+                    child: StartButton(
+                      game: game,
+                    ),
+                  ),
             },
           ),
         ),

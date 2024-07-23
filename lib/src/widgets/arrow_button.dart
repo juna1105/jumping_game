@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -70,6 +68,13 @@ class ArrowButton extends StatefulWidget {
 class _ArrowButtonState extends State<ArrowButton> {
   late AssetsAudioPlayer _assetsAudioPlayer;
   double boxSize = 80;
+
+  void changeBoxSize(double after) {
+    setState(() {
+      boxSize = after;
+    });
+  }
+
   Color _getBackgroundColor(ButtonType btnType) {
     switch (btnType) {
       case ButtonType.tl:
@@ -85,7 +90,6 @@ class _ArrowButtonState extends State<ArrowButton> {
 
   @override
   void initState() {
-    // TODO: implement initState
     _assetsAudioPlayer = AssetsAudioPlayer.newPlayer();
     super.initState();
   }
@@ -109,9 +113,7 @@ class _ArrowButtonState extends State<ArrowButton> {
     return Consumer<QuestionManager>(
       builder: (context, questionManager, child) => GestureDetector(
         onTapDown: (details) {
-          setState(() {
-            boxSize = 100;
-          });
+          changeBoxSize(110);
           ReactType refresh = questionManager.checkCorrectAnswer(
               widget.btnType, questionManager.count);
           switch (refresh) {
@@ -125,12 +127,10 @@ class _ArrowButtonState extends State<ArrowButton> {
           }
         },
         onTapUp: (details) {
-          setState(() {
-            boxSize = 80;
-          });
+          changeBoxSize(80);
         },
         child: AnimatedContainer(
-          duration: 200.ms,
+          duration: 500.ms,
           width: boxSize,
           height: boxSize,
           decoration: BoxDecoration(
