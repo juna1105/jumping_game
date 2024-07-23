@@ -26,7 +26,7 @@ class _StartButtonState extends State<StartButton> {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTapDown: (details) {
-          print(DateTime.now());
+          print(DateTime.now().millisecondsSinceEpoch);
           changeBoxSize(width * 1.2, height * 1.2);
           widget.game.gameStart();
         },

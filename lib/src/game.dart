@@ -10,7 +10,13 @@ enum PlayState { welcome, playing, gameOver }
 
 class JumpGame extends Forge2DGame with HasCollisionDetection, TapDetector {
   late PlayerForge2d player;
-  JumpGame() : super(zoom: 1.0, gravity: Vector2(0, 1000));
+  double accumulatedTime = 0.0;
+  final double timeStep = 1.0 / 60.0; // 물리 업데이트 간격 (60 FPS 기준)
+  JumpGame()
+      : super(
+          zoom: 1.0,
+          gravity: Vector2(0, 1000),
+        );
   double get width => size.x;
   double get height => size.y;
   late PlayState _playState;
@@ -31,6 +37,18 @@ class JumpGame extends Forge2DGame with HasCollisionDetection, TapDetector {
   }
 
   @override
+  void update(double dt) {
+    // Delta Time을 누적
+    accumulatedTime += dt;
+
+    // 누적 시간에 따라 물리 업데이트
+    while (accumulatedTime >= timeStep) {
+      super.update(timeStep); // Forge2D의 물리 엔진 업데이트
+      accumulatedTime -= timeStep;
+    }
+  }
+
+  @override
   FutureOr<void> onLoad() async {
     playState = PlayState.welcome;
     Floor topFloor = Floor(
@@ -44,6 +62,7 @@ class JumpGame extends Forge2DGame with HasCollisionDetection, TapDetector {
       ),
     );
     BackGround background = BackGround();
+
     await super.onLoad();
     await world.add(background);
     await world.add(topFloor);

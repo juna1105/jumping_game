@@ -8,6 +8,7 @@ class PlayerForge2d extends BodyComponent<JumpGame> with ContactCallbacks {
       : super(
           renderBody: false,
           children: [
+            FpsTextComponent(),
             SpriteComponent(
               sprite: sprite,
               anchor: Anchor.center,
@@ -49,5 +50,4 @@ class PlayerForge2d extends BodyComponent<JumpGame> with ContactCallbacks {
     print('I M PLAYER');
     super.beginContact(other, contact);
   }
-
 }
